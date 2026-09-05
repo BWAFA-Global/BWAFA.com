@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BWAFA — Building With Africans, For Africa</title>
+<link href="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-01-1bfacd54218ec7df.webp" rel="icon"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&amp;family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --cream: #F6EFE2;
+    --cream-2: #ECE0C9;
+    --maroon: #6E2430;
+    --maroon-deep: #4A171F;
+    --ink: #2A2119;
+    --ink-soft: #5C5044;
+    --line: rgba(74,23,31,0.18);
+    --white: #FBF7EE;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    color:var(--maroon-deep);
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 22px;}}
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){*{animation:none!important; transition:none!important;}}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,239,226,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:flex-start;
+    height:76px;
+  }
+  .brand{display:flex; align-items:center; gap:12px; margin-right:auto;}
+  .brand img{width:40px; height:40px; border-radius:50%;}
+  .brand span{font-family:'Fraunces', serif; font-size:1.15rem; font-weight:600; color:var(--maroon-deep);}
+  .navlinks{display:flex; gap:26px; font-size:0.92rem; color:var(--ink-soft);}
+  .navlinks a{border-bottom:1px solid transparent; padding-bottom:3px; transition:border-color .2s, color .2s;}
+  .navlinks a:hover{border-color:var(--maroon); color:var(--maroon-deep);}
+  .navcta{
+    font-size:0.88rem; font-weight:600; color:var(--white);
+    background:var(--maroon); padding:10px 20px; border-radius:2px;
+    margin-left:24px;
+    transition:background .2s;
+  }
+  .navcta:hover{background:var(--maroon-deep);}
+  .menu-btn{display:none; background:none; border:none; cursor:pointer;}
+  .menu-btn span{display:block; width:24px; height:2px; background:var(--maroon-deep); margin:5px 0;}
+  @media(max-width:1100px) and (min-width:901px){
+    .navlinks{gap:18px; font-size:0.86rem;}
+    .navcta{margin-left:16px; padding:10px 16px;}
+  }
+  @media(max-width:900px){
+    .navlinks{display:none;}
+    .navcta{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 96px;}
+  .hero .wrap{display:grid; grid-template-columns:1.05fr 0.85fr; gap:64px; align-items:center;}
+  .hero-tag{font-size:0.95rem; color:var(--maroon); font-weight:600; margin-bottom:18px; display:block;}
+  .hero h1{font-size:clamp(2.4rem, 4.2vw, 3.6rem); line-height:1.08;}
+  .hero .sub{font-family:'Fraunces', serif; font-style:italic; font-weight:400; font-size:1.25rem; color:var(--maroon); margin-top:20px; max-width:46ch;}
+  .hero p.lead{margin-top:22px; max-width:52ch; color:var(--ink-soft); font-size:1.05rem;}
+  .hero-ctas{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary, .btn-secondary{
+    display:inline-block; padding:14px 26px; font-size:0.95rem; font-weight:600; border-radius:2px;
+    transition:transform .15s, background .2s, color .2s;
+  }
+  .btn-primary{background:var(--maroon); color:var(--white);}
+  .btn-primary:hover{background:var(--maroon-deep);}
+  .btn-secondary{border:1px solid var(--maroon-deep); color:var(--maroon-deep);}
+  .btn-secondary:hover{background:var(--maroon-deep); color:var(--white);}
+  .hero-art{position:relative;}
+  .hero-art .frame{
+    border:10px solid var(--white);
+    box-shadow:0 24px 48px rgba(74,23,31,0.18);
+  }
+  .hero-art img{display:block;}
+  @media(max-width:900px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1;}
+    .hero-art .frame{max-width:340px; margin:0 auto;}
+  }
+
+  /* ---------- AT A GLANCE ---------- */
+  .glance{background:var(--cream-2); padding:52px 0;}
+  .glance .wrap{
+    display:grid; grid-template-columns:repeat(5,1fr);
+  }
+  .glance-item{padding:0 22px; border-left:1px solid var(--line);}
+  .glance-item:first-child{border-left:none; padding-left:0;}
+  .glance-item .label{font-size:0.78rem; color:var(--maroon); font-weight:600; margin-bottom:8px;}
+  .glance-item .val{font-size:0.92rem; color:var(--ink); line-height:1.5;}
+  @media(max-width:900px){
+    .glance .wrap{grid-template-columns:1fr 1fr; row-gap:28px;}
+    .glance-item{border-left:none; border-top:1px solid var(--line); padding:20px 18px 0 0;}
+    .glance-item:first-child{border-top:none; padding-top:0;}
+  }
+  @media(max-width:560px){.glance .wrap{grid-template-columns:1fr;}}
+
+  /* ---------- GAP SECTION ---------- */
+  .gap{padding:100px 0;}
+  .gap .wrap{display:grid; grid-template-columns:0.9fr 1.3fr; gap:60px;}
+  .gap-stat{font-family:'Fraunces', serif; font-size:clamp(4rem,9vw,7rem); color:var(--maroon); line-height:0.9; font-weight:600;}
+  .gap-stat-label{margin-top:14px; font-size:0.95rem; color:var(--ink-soft); max-width:24ch;}
+  .gap-body h2{font-size:clamp(1.6rem,2.6vw,2.1rem); margin-bottom:22px; max-width:18ch;}
+  .gap-body p{color:var(--ink-soft); max-width:60ch; margin-bottom:16px; font-size:1.02rem;}
+  .gap-body p strong{color:var(--ink); font-weight:600;}
+  @media(max-width:900px){.gap .wrap{grid-template-columns:1fr;}}
+
+  /* ---------- MOVEMENT / FIRM ---------- */
+  .duo{display:grid; grid-template-columns:1fr 1fr;}
+  .duo-panel{padding:80px 48px;}
+  .duo-panel.movement{background:var(--cream-2);}
+  .duo-panel.firm{background:var(--maroon-deep); color:var(--white);}
+  .duo-panel h3{font-size:1.7rem; margin-bottom:20px;}
+  .duo-panel.firm h3{color:var(--white);}
+  .duo-panel p{max-width:38ch; font-size:1rem;}
+  .duo-panel.movement p{color:var(--ink-soft);}
+  .duo-panel.firm p{color:#E9DCC9;}
+  .duo-panel .role{display:inline-block; margin-top:24px; font-family:'Fraunces',serif; font-style:italic; font-size:1.05rem;}
+  .duo-panel.movement .role{color:var(--maroon);}
+  .duo-panel.firm .role{color:#D8B98B;}
+  @media(max-width:800px){.duo{grid-template-columns:1fr;} .duo-panel{padding:56px 28px;}}
+
+  .whysplit{background:var(--cream); padding:56px 0; border-bottom:1px solid var(--line);}
+  .whysplit .wrap{max-width:820px;}
+  .whysplit p{font-family:'Fraunces',serif; font-style:italic; font-size:1.25rem; color:var(--maroon-deep); line-height:1.5; text-align:center;}
+
+  .split-guide{background:var(--cream); padding:64px 0;}
+  .split-guide .wrap{max-width:1000px;}
+  .split-guide h4{font-size:1.15rem; margin-bottom:28px; color:var(--ink);}
+  .guide-row{display:grid; grid-template-columns:1fr 1fr; border-top:1px solid var(--line);}
+  .guide-row:last-child{border-bottom:1px solid var(--line);}
+  .guide-cell{padding:20px 26px; font-size:0.95rem;}
+  .guide-cell.m{color:var(--ink-soft); border-right:1px solid var(--line);}
+  .guide-cell.f{color:var(--ink);}
+  .guide-cell b{color:var(--maroon-deep); font-weight:600;}
+  @media(max-width:700px){.guide-row{grid-template-columns:1fr;} .guide-cell.m{border-right:none; border-bottom:1px solid var(--line);}}
+
+  /* ---------- SERVICES ---------- */
+  .services{padding:100px 0 80px;}
+  .services > .wrap > h2{font-size:clamp(1.6rem,2.6vw,2.1rem); max-width:16ch; margin-bottom:16px;}
+  .services-sub{color:var(--ink-soft); max-width:56ch; font-size:1rem; margin-bottom:44px;}
+  .services-close{margin-top:36px; font-family:'Fraunces',serif; font-style:italic; color:var(--maroon-deep); font-size:1.15rem; max-width:52ch;}
+  .service-row{
+    display:grid; grid-template-columns:70px 1fr; gap:24px;
+    padding:30px 0; border-top:1px solid var(--line);
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-num{font-family:'Fraunces',serif; font-size:1.6rem; color:var(--maroon); font-weight:500;}
+  .service-row h3{font-size:1.2rem; margin-bottom:8px; color:var(--ink);}
+  .service-row p{color:var(--ink-soft); max-width:60ch; font-size:0.98rem;}
+  @media(max-width:600px){.service-row{grid-template-columns:1fr; gap:8px;}}
+
+  /* ---------- DONT ---------- */
+  .dont{padding:0 0 100px;}
+  .dont .wrap{max-width:900px;}
+  .dont-box{
+    border:1px solid var(--maroon-deep); padding:40px; position:relative;
+  }
+  .dont-box .mark{font-family:'Fraunces',serif; font-size:2.4rem; color:var(--maroon); line-height:1; margin-bottom:14px;}
+  .dont-box p{color:var(--ink); font-size:1.02rem; max-width:64ch;}
+
+  /* ---------- FOUNDER ---------- */
+  .founder{background:var(--cream-2); padding:100px 0;}
+  .founder .wrap{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  .founder-role{font-size:0.95rem; color:var(--maroon); font-weight:600; margin-bottom:10px;}
+  .founder h2{font-size:clamp(1.7rem,2.8vw,2.3rem); margin-bottom:6px;}
+  .founder-title{font-family:'Fraunces',serif; font-style:italic; color:var(--ink-soft); font-size:1.05rem; margin-bottom:26px; display:block;}
+  .founder-cred{font-size:0.88rem; color:var(--ink-soft); line-height:1.8; border-left:2px solid var(--maroon); padding-left:16px;}
+  .founder-edu{font-style:italic; display:inline-block; margin-top:2px;}
+  .founder-email{margin-top:18px; padding-left:16px;}
+  .founder-email a{font-size:0.92rem; color:var(--maroon-deep); font-weight:600; border-bottom:1px solid var(--maroon);}
+  .founder-story p{color:var(--ink); font-size:1.02rem; margin-bottom:18px; max-width:58ch;}
+  .founder-story blockquote{
+    font-family:'Fraunces',serif; font-style:italic; font-size:1.3rem; color:var(--maroon-deep);
+    margin:28px 0; padding-left:22px; border-left:3px solid var(--maroon); max-width:52ch;
+  }
+  @media(max-width:900px){.founder .wrap{grid-template-columns:1fr;}}
+  .founder-portrait{margin-bottom:28px; max-width:280px;}
+  .founder-portrait img{border:8px solid var(--white); box-shadow:0 18px 36px rgba(74,23,31,0.16);}
+  .founder-inset{margin-top:28px; max-width:220px; transform:rotate(-2deg);}
+  .founder-inset img{border:6px solid var(--white); box-shadow:0 14px 28px rgba(74,23,31,0.16);}
+  .life-block{
+    margin-top:56px; padding-top:48px; border-top:1px solid var(--line);
+    display:grid; grid-template-columns:200px 1fr; gap:36px; align-items:center;
+  }
+  .life-block img{border:6px solid var(--white); box-shadow:0 16px 32px rgba(74,23,31,0.18); transform:rotate(-3deg);}
+  .life-label{font-size:0.78rem; color:var(--maroon); font-weight:600; margin-bottom:10px;}
+  .life-block p{color:var(--ink); font-size:1.02rem; max-width:46ch; margin:0;}
+  .life-block .fine{margin-top:10px; font-family:'Fraunces',serif; font-style:italic; color:var(--maroon-deep); font-size:1rem;}
+  @media(max-width:700px){.life-block{grid-template-columns:1fr;} .life-block img{max-width:200px;}}
+
+  /* ---------- WORK WITH US ---------- */
+  .work{padding:100px 0;}
+  .work .wrap{max-width:1080px; text-align:left;}
+  .work-grid{display:grid; grid-template-columns:1.3fr 0.7fr; gap:56px; align-items:center;}
+  .work-hook{font-family:'Fraunces',serif; font-style:italic; font-size:1.2rem; color:var(--maroon-deep); margin-bottom:36px;}
+  .work-envelope img{max-width:280px; margin:0 auto; transform:rotate(2deg); box-shadow:0 20px 40px rgba(74,23,31,0.16);}
+  @media(max-width:800px){.work-grid{grid-template-columns:1fr;} .work-envelope{order:-1;} .work-envelope img{max-width:200px;}}
+
+  /* ---------- WHY MOVEMENT + FIRM ---------- */
+  .whyfirm{padding:90px 0; background:var(--cream);}
+  .whyfirm .wrap{max-width:820px;}
+  .whyfirm-label{display:block; font-size:0.78rem; font-weight:600; color:var(--maroon); letter-spacing:0.04em; text-transform:uppercase; margin-bottom:14px;}
+  .whyfirm h2{font-size:clamp(1.6rem,2.6vw,2.1rem); margin-bottom:22px; max-width:20ch;}
+  .whyfirm p{color:var(--ink-soft); font-size:1.02rem; margin-bottom:16px; max-width:64ch;}
+  .whyfirm-points{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:36px;}
+  .whyfirm-point h4{font-family:'Fraunces',serif; color:var(--maroon-deep); font-size:1.05rem; margin-bottom:8px;}
+  .whyfirm-point p{font-size:0.92rem; margin:0;}
+  @media(max-width:768px){.whyfirm-points{grid-template-columns:1fr;}}
+
+  /* ---------- FREE VS PAID ---------- */
+  .free-paid{padding:96px 0; background:var(--cream-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .free-paid .wrap{max-width:1080px;}
+  .free-paid-label{display:block; font-size:0.78rem; font-weight:600; color:var(--maroon); letter-spacing:0.04em; text-transform:uppercase; margin-bottom:14px;}
+  .free-paid > .wrap > h2{font-size:clamp(1.9rem,3vw,2.5rem); margin-bottom:36px; max-width:24ch;}
+  .free-paid-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-bottom:72px;}
+  .free-paid-card{padding:34px 32px; border:1px solid var(--line); background:var(--white);}
+  .free-paid-card.firm-card{background:var(--maroon-deep); color:var(--white); border-color:var(--maroon-deep);}
+  .free-paid-kicker{display:block; font-family:'Fraunces',serif; font-size:1.15rem; font-weight:500; color:var(--maroon); margin-bottom:10px;}
+  .firm-card .free-paid-kicker{color:#D8B98B;}
+  .free-paid-card h3{font-size:1.35rem; margin-bottom:16px;}
+  .firm-card h3{color:var(--white);}
+  .free-paid-card p{font-size:0.98rem; color:var(--ink-soft); margin-bottom:16px; max-width:62ch;}
+  .firm-card p{color:#E9DCC9;}
+  .free-paid-card p:last-child{margin-bottom:0;}
+  .mandates{border-top:1px solid var(--line); padding-top:42px; display:grid; grid-template-columns:0.65fr 1.35fr; gap:56px; align-items:start;}
+  .mandates > div:first-child h3{font-size:1.5rem; max-width:16ch; margin-top:4px;}
+  .mandate{display:grid; grid-template-columns:52px 1fr; gap:20px; padding:26px 0; border-top:1px solid var(--line);}
+  .mandate:first-child{padding-top:0; border-top:0;}
+  .mandate-num{font-family:'Fraunces',serif; font-size:1.35rem; color:var(--maroon);}
+  .mandate h4{font-size:1.15rem; margin-bottom:8px; color:var(--maroon-deep);}
+  .mandate p{font-size:0.96rem; color:var(--ink-soft); margin:0; max-width:62ch;}
+  @media(max-width:800px){.free-paid-grid{grid-template-columns:1fr;} .mandates{grid-template-columns:1fr; gap:28px;}}
+
+  /* ---------- PROOF OF WORK & REVIEWS ---------- */
+  .proof{background:var(--cream-2); padding:90px 0; text-align:center;}
+  .proof-label{display:inline-block; font-size:0.78rem; font-weight:600; color:var(--maroon); border:1px solid var(--maroon); padding:4px 12px; border-radius:20px; margin-bottom:16px;}
+  .proof h2{font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:16px;}
+  .proof-note{color:var(--ink-soft); max-width:70ch; margin:0 auto 40px; font-size:0.98rem; font-style:italic;}
+  .proof-visual{max-width:1000px; margin:0 auto 56px; border-radius:6px; overflow:hidden; box-shadow:0 18px 40px rgba(74,23,31,0.18);}
+  .proof-visual img{width:100%; display:block;}
+  .proof-stat{margin:0 auto 56px; display:inline-flex; align-items:baseline; gap:12px; flex-wrap:wrap; justify-content:center;}
+  .proof-stat .stat-num{font-family:'Fraunces',serif; font-weight:600; font-size:clamp(2.2rem,4vw,3rem); color:var(--maroon-deep);}
+  .proof-stat .stat-label{font-size:0.9rem; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.03em;}
+  .receipts-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; text-align:left; align-items:stretch;}
+  .portfolio-card,.review-card{background:var(--white); padding:28px 22px; border-radius:4px; box-shadow:0 12px 28px rgba(74,23,31,0.10); display:flex; flex-direction:column; min-width:0;}
+  .portfolio-card{justify-content:flex-start;}
+  .review-card{justify-content:space-between;}
+  .portfolio-loc{font-size:0.72rem; color:var(--maroon); font-weight:600; letter-spacing:0.02em; margin-bottom:10px;}
+  .portfolio-card h3{font-size:1.18rem; margin-bottom:18px;}
+  .portfolio-row{margin-bottom:14px;}
+  .portfolio-row:last-child{margin-bottom:0;}
+  .portfolio-row .tag{display:block; font-size:0.7rem; font-weight:600; color:var(--maroon-deep); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px;}
+  .portfolio-row p{font-size:0.86rem; color:var(--ink-soft); margin:0; line-height:1.52;}
+  .review-quote{font-family:'Fraunces',serif; font-style:italic; color:var(--ink); font-size:0.9rem; line-height:1.55; margin:0 0 18px;}
+  .review-shot{margin-bottom:18px; border-radius:4px; overflow:hidden; box-shadow:0 10px 22px rgba(74,23,31,0.14);}
+  .review-shot img{width:100%; display:block;}
+  .review-attrib{font-size:0.84rem; font-weight:600; color:var(--maroon-deep); margin-bottom:6px; line-height:1.45;}
+  .review-outcome{font-size:0.76rem; color:var(--maroon); border-top:1px solid var(--line); padding-top:10px; margin-top:auto; line-height:1.45;}
+  @media(max-width:1100px){.receipts-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+  @media(max-width:640px){.receipts-grid{grid-template-columns:1fr;}}
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--maroon-deep); color:var(--white); padding:64px 0 36px;}
+  footer .wrap{display:flex; flex-direction:column; align-items:flex-start; gap:22px;}
+  footer .flogo{display:flex; align-items:center; gap:14px;}
+  footer .flogo img{width:46px; height:46px; border-radius:50%;}
+  footer .flogo span{font-family:'Fraunces',serif; font-size:1.25rem;}
+  footer .tagline{font-family:'Fraunces',serif; font-style:italic; font-size:1.15rem; color:#E9DCC9; max-width:40ch;}
+  .fcontact-grid{display:flex; gap:56px; flex-wrap:wrap;}
+  .fcontact-block{display:flex; flex-direction:column; gap:6px; font-size:0.9rem;}
+  .fcontact-label{font-size:0.78rem; text-transform:none; color:#B7A78F; margin-bottom:2px;}
+  .fcontact-block a{color:#D8CBB6; transition:color .2s;}
+  .fcontact-block a:hover{color:var(--white);}
+  .socials{display:flex; align-items:center; gap:12px; margin-top:2px;}
+  .social-link{width:38px; height:38px; display:inline-flex; align-items:center; justify-content:center; border:1px solid rgba(216,203,182,.45); border-radius:50%; color:#D8CBB6; transition:color .2s, background .2s, border-color .2s, transform .2s;}
+  .social-link:hover{color:var(--maroon-deep); background:var(--white); border-color:var(--white); transform:translateY(-2px);}
+  .social-link svg{width:18px; height:18px; fill:currentColor;}
+  .social-label{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+  .fmeta{font-size:0.8rem; color:#B7A78F; margin-top:8px;}
+
+/* Receipts Room: keep case studies in a clean 4-up row, then stack reviews independently to eliminate large blank areas. */
+.receipts-grid{display:block;}
+.receipts-grid > .portfolio-card{display:block; margin:0;}
+.case-studies-grid{display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; margin-bottom:22px;}
+.review-columns{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; align-items:start;}
+.review-stack{display:flex; flex-direction:column; gap:22px; min-width:0;}
+.review-card{height:auto; min-height:0;}
+@media(max-width:1000px){.case-studies-grid{grid-template-columns:repeat(2,minmax(0,1fr));}.review-columns{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:640px){.case-studies-grid,.review-columns{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<header>
+<nav class="wrap">
+<a class="brand" href="#top">
+<img alt="BWAFA logo" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-01-1bfacd54218ec7df.webp"/>
+<span>BWAFA</span>
+</a>
+<div class="navlinks">
+<a href="#gap">Who We Are</a>
+<a href="#duo">Movement &amp; Firm</a>
+<a href="#services">What We Do</a>
+<a href="#proof">Proof of Work</a>
+<a href="#founder">Founder</a>
+</div>
+<a class="navcta" href="#work">Protect Your Equity</a>
+<button aria-label="menu" class="menu-btn"><span></span><span></span><span></span></button>
+</nav>
+</header>
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+<div class="wrap">
+<div class="hero-copy">
+<span class="hero-tag">BWAFA (B-wah-fah)</span>
+<h1>Building With Africans,<br/>For Africa.</h1>
+<p class="sub">The Movement creates the authority. The Firm converts it.</p>
+<p class="lead">Africa's been building loud for a while now. African ventures are moving with real momentum, proven economics, and operational scale, we're talking traction from Lagos to Kigali to California. We bridge the gap between ground-level performance and capital-market evaluation. BWAFA structures commercial models, constructs defensible contract architecture, and aligns market positioning so founders retain ownership, eliminate cash leaks, and command their true valuation. <em>Operation: Build the asset. Keep the wheel.</em></p>
+<div class="hero-ctas">
+<a class="btn-primary" href="#work">Protect Your Equity</a>
+<a class="btn-secondary" href="https://www.instagram.com/bwafaglobal" rel="noopener noreferrer" target="_blank">Join the Tribe</a>
+</div>
+</div>
+<div class="hero-art">
+<div class="frame"><img alt="BWAFA — Building With Africans, For Africa, continental motif" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-02-6b8b59f0cac5097c.webp"/></div>
+</div>
+</div>
+</section>
+<!-- AT A GLANCE -->
+<section class="glance">
+<div class="wrap">
+<div class="glance-item">
+<div class="label">Identity</div>
+<div class="val">A Pan-African Movement &amp; A Pan-African Firm. Beyond just a collective of minds shaping the continent’s future, we’re bridging Build &amp; Ownership, creating investment-grade assets.</div>
+</div>
+<div class="glance-item">
+<div class="label">Model</div>
+<div class="val">Builders, founders, creatives, people. For the current generation &amp; the ones to come. A literal legacy.</div>
+</div>
+<div class="glance-item">
+<div class="label">Core Output</div>
+<div class="val">Decks that hold, numbers that check out, contracts with teeth</div>
+</div>
+<div class="glance-item">
+<div class="label">Who It's For</div>
+<div class="val">The Tribe: founders, creatives and builders across the continent and diaspora</div>
+</div>
+<div class="glance-item">
+<div class="label">Outcome</div>
+<div class="val">Get recognised. Get funded. Keep the wheel, and keep building.</div>
+</div>
+</div>
+</section>
+<!-- THE GAP -->
+<section class="gap" id="gap">
+<div class="wrap">
+<div class="gap-figures">
+<div class="gap-stat">3%</div>
+<div class="gap-stat-label">Africa's share of global GDP, unmoved for two decades, despite holding 30% of the world's mineral reserves.</div>
+</div>
+<div class="gap-body">
+<h2>The gap we close</h2>
+<p>By 2030, four in ten of the world's young people will be African. Working-age population, largest on earth by 2040. Nobody builds like this by accident, and the Tribe is proof: real products, real revenue, real culture that travels further than the credit it gets.</p>
+<p>Here's the part that stings. Plenty of founders losing rounds right now are objectively better than the ones winning them. Better product, better margins, better founder, told in a deck that undersells all of it, in a contract nobody stress-tested, in a brand voice that only says what they think an investor wants to hear.</p>
+<p>That gap is not just about funding, even if funding is where it hurts loudest. It shows up in daily communications that quiet your authority, grant proposals that read generic, and contract clauses no one caught until they cost something. BWAFA closes that gap wherever it appears. We ensure what you have actually built on the ground and what the room in front of you understands are finally the same thing: defensible positioning that competitors cannot easily copy, built on what is real rather than a performance.</p>
+</div>
+</div>
+</section>
+<!-- MOVEMENT / FIRM -->
+<section class="duo" id="duo">
+<div class="duo-panel movement">
+<h3>The Movement</h3>
+<p>We call ourselves the Tribe. Builders, founders, creatives, and the ones who stopped waiting for permission a while ago. We move on conviction and momentum, on Roundtables and reply-guy DMs turned real conversations, on the belief that Africa's business doesn't need a translator, it needs backing. Culture with capital instincts, showing up before the raise, not just after it.</p>
+<span class="role">This is where the authority gets built.</span>
+</div>
+<div class="duo-panel firm">
+<h3>The Firm</h3>
+<p>This is the engine room. Decks get rebuilt, models get stress-tested until the leaks stop, contracts get drafted so they hold when someone actually pushes back, and the whole business gets positioned like the investment-grade asset it already is, brand, numbers, and legal, together.</p>
+<span class="role">This is where the authority turns into currency.</span>
+</div>
+</section>
+<section class="whysplit">
+<div class="wrap">
+<p>Conviction without structure gets exploited. Structure without conviction gets ignored. If it's telling you what's wrong, that's the Movement talking. If it's the one in the room fixing it, that's the Firm. We were never going to pick a side.</p>
+</div>
+</section>
+<!-- WHY MOVEMENT + FIRM -->
+<section class="whyfirm">
+<div class="wrap">
+<span class="whyfirm-label">Why Movement + Firm?</span>
+<h2>Because playing small was never on the table.</h2>
+<p>Building With Africans, For Africa. Read that back slowly. That's not a name for something built to stay small, it's a whole building, with Africans in it, doing the work. Nobody holds up a building like that alone, and nobody holds it up on conviction alone either.</p>
+<p>Bridging what's actually built on the ground with what capital markets recognize takes more than one seat at the table. It takes the capacity to occupy several, at once: the Movement to keep the culture and the conviction honest, the Firm to make sure the paperwork can survive the room it walks into. Africa has gone beyond laying low. This is what showing up at full size looks like.</p>
+<div class="whyfirm-points">
+<div class="whyfirm-point">
+<h4>Scale needs structure</h4>
+<p>A movement without a firm behind it stays a vibe. We built both, so the energy has somewhere to land.</p>
+</div>
+<div class="whyfirm-point">
+<h4>Ownership is the whole point</h4>
+<p>Capital means nothing if you hand over the wheel to get it. The Firm exists so you don't have to.</p>
+</div>
+<div class="whyfirm-point">
+<h4>Credibility compounds</h4>
+<p>Every deck that holds, every contract that doesn't get contested, raises what the next founder in the Tribe gets taken seriously for.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- FREE VS PAID -->
+<section class="free-paid" id="free-paid">
+<div class="wrap">
+<span class="free-paid-label">The Movement &amp; The Firm</span>
+<h2>What’s FREE vs. What’s PAID</h2>
+<div class="free-paid-grid">
+<article class="free-paid-card movement-card">
+<span class="free-paid-kicker">The Movement</span>
+<h3>Open. Collective. Pan-African.</h3>
+<p>The Movement is open. Driven by the Tribe, it is our Pan-African collective of builders, founders, and creators; PEOPLE sharing knowledge, momentum and shared authority across the continent through real action and visible impact.</p>
+</article>
+<article class="free-paid-card firm-card">
+<span class="free-paid-kicker">The Firm</span>
+<h3>A paid practice. Built for the heavy labour.</h3>
+<p>The Firm is a paid practice. It is a dedicated team of specialists putting in the heavy labor behind closed doors to ensure your venture is built to last, investment-ready, and audit-proof. We do not do free deck reviews, quick favors, or casual strategy calls. If we are digging into your numbers, contracts, or pitch decks, it is a paid engagement, every single time.</p>
+<p>We charge for our expertise because high-level structural work requires real labor, and feeding the brain trust behind that work is how we keep building across Africa.</p>
+</article>
+</div>
+<div class="mandates">
+<div>
+<span class="free-paid-label">Our Advisory Mandates</span>
+<h3>Structural work with a clear mandate.</h3>
+</div>
+<div class="mandate-list">
+<article class="mandate">
+<span class="mandate-num">01</span>
+<div>
+<h4>Commercial Structure Audit</h4>
+<p>A focused deep-dive of your business structure and deal terms. We stress-test your go-to-market model to find operational leaks, fix bad terms before partners exploit them and refine your positioning so you walk into capital rooms with total control.</p>
+</div>
+</article>
+<article class="mandate">
+<span class="mandate-num">02</span>
+<div>
+<h4>Retained Growth Advisory</h4>
+<p>Long-term, direct, ongoing partner-level backing for scaling companies. We step into your corner to guide expansion moves, structure major partnerships, refine pricing strategies, investor readiness, and ensure your business stays fundable as you grow across markets.</p>
+</div>
+</article>
+</div>
+</div>
+</div>
+</section>
+<!-- SERVICES -->
+<section class="services" id="services">
+<div class="wrap">
+<h2>What we do</h2>
+<p class="services-sub">Not just pitch decks, though those get fixed too. Most founders lose the room because they only focus on what they think an investor wants to hear, instead of what's actually true about the business. Six lanes, one job: close that gap wherever it's hiding.</p>
+<div class="service-row">
+<div class="service-num">01</div>
+<div>
+<h3>Brand Narrative &amp; Pitch Clarity</h3>
+<p>We take what your company actually does and put it into words that survive a room full of people who've heard every pitch already.</p>
+</div>
+</div>
+<div class="service-row">
+<div class="service-num">02</div>
+<div>
+<h3>Commercial Architecture</h3>
+<p>Your business model, read like a contract, line by line, until every leaking margin gets found and every price finally makes sense.</p>
+</div>
+</div>
+<div class="service-row">
+<div class="service-num">03</div>
+<div>
+<h3>Communication Audits</h3>
+<p>An honest look at how you show up everywhere, the deck, the DMs, the default tone, and a straight answer on what's quietly working against you, and for you.</p>
+</div>
+</div>
+<div class="service-row">
+<div class="service-num">04</div>
+<div>
+<h3>Grant &amp; Investor Narrative</h3>
+<p>Funding applications and grant proposals, rebuilt so a reviewer reads past line one and starts rooting for you instead of skimming.</p>
+</div>
+</div>
+<div class="service-row">
+<div class="service-num">05</div>
+<div>
+<h3>Legal Intelligence Applied</h3>
+<p>Contracts drafted, reviewed, and pressure-tested, so the clause nobody read twice doesn't end up costing you the company.</p>
+</div>
+</div>
+<div class="service-row">
+<div class="service-num">06</div>
+<div>
+<h3>EdTech &amp; Learning Design</h3>
+<p>Curriculum and platforms built for people who actually finish what they started, not just scroll through it.</p>
+</div>
+</div>
+<p class="services-close">End result: positioning competitors can't easily copy, because it's built from what's actually true about your business. No template, no borrowed voice, iykyk.</p>
+</div>
+</section>
+<!-- WHAT WE DON'T DO -->
+<section class="dont">
+<div class="wrap">
+<div class="dont-box">
+<div class="mark">What we don't do</div>
+<p>We review. We draft. We restructure. What we don't do is file your trademark or sit in as your registered legal counsel, your own lawyer handles that part. What we will do is the digging: finding and recommending the right legal firm in your country for your specific situation, so you're not googling "lawyer near me" the night before a signing deadline. Our job is making sure whatever ends up in that filing actually protects what's yours.</p>
+</div>
+</div>
+</section>
+<!-- FOUNDER -->
+<section class="founder" id="founder">
+<div class="wrap">
+<div class="founder-side">
+<div class="founder-portrait"><img alt="Mandy Morah, Founder and Lead Architect of BWAFA" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-03-9c33f7b6d94a81ee.webp"/></div>
+<h2>Mandy Morah</h2>
+<span class="founder-title">Founder &amp; Lead Architect, BWAFA</span>
+<div class="founder-cred">
+          Legal Counsel &amp; Commercial Architect<br/>
+          NAWLI — Narrative Architect with Legal Intelligence<br/>
+<span class="founder-edu">First Class Honours, Law and Business (B.L)<br/>
+          Nottingham Law School &amp; Nottingham Business School, Nottingham Trent University</span>
+</div>
+<div class="founder-inset"><img alt="BWAFA notebook, Narrative Architecture, Action and Impact" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-04-a3f0e4295c81117c.webp"/></div>
+<div class="founder-email"><a href="mailto:hello@mandymorah.com">hello@mandymorah.com</a></div>
+</div>
+<div class="founder-story">
+<span class="founder-role">The mind behind BWAFA, in service of the institution</span>
+<p style="margin-top:14px;">This isn't a personality spotlight. It's context for how BWAFA thinks, decides, and advocates for African ventures.</p>
+<p>Long before BWAFA had a name, Our Founder was the person who noticed when something didn't add up: a conversation tilted against the quieter voice, a process that rewarded presentation over substance, a decision that treated African builders as risk before it recognised their rigour. The instinct was never theatrical. It was practical, persistent, and hard to switch off, the kind of thing that got her called "firm and instructive" by a courtroom panel before she'd even finished the degree.</p>
+<p>Over time, that attention moved from individual moments to a pattern worth naming. Strong ventures kept struggling to be legible to capital. Founder stories kept getting forced into borrowed language. Contracts and commercial structures kept arriving late, once the leverage was already gone. BWAFA was built in response to that pattern, not as commentary from the sidelines, but as operating work done alongside founders.</p>
+<blockquote>Cultural authority, paired with commercial precision. That's the whole method.</blockquote>
+<p>The founder story matters only because it explains that method: clearer decks, sharper investor narratives, revenue architecture that holds, and legal intelligence applied early enough to protect ownership while growth is still being designed, not after the leverage is gone.</p>
+<div class="life-block">
+<img alt="Mandy Morah, off duty" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-05-36a0514f7474d3d7.webp"/>
+<div>
+<div class="life-label">Work-Life Integration</div>
+<p>Yeah, our founder works and plays hard too. A bit of a goofy-goof yet quite grounded when it’s time to wheel. She believes it’s rarely a "balance" when you're up building at 2am &amp; somehow show up at 7am blazing everywhere needed. Predictable patterns tend to produce short-term results. The unconventional hours &amp; patterns are usually where the long-term ones come from.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- PROOF OF WORK & TRIBE REVIEWS -->
+<section class="proof" id="proof">
+<div class="wrap">
+<span class="proof-label">Proof of Work</span>
+<h2>The Receipts Room</h2>
+<p class="proof-note">PEOPLE, ACTIONS, OUTCOMES &amp; IMPACTS</p>
+<div class="proof-visual">
+<img alt="BWAFA portfolio proof of work showing AgriKip Solutions, FIT-GEAR Brand and Zura Commerce outcomes across Africa." src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/file_00000000899c82108c0d7da36cd62d6b.jpg"/>
+</div>
+<div class="proof-stat">
+<span class="stat-num">$41.7k+</span>
+<span class="stat-label">Capital Secured Across the Continent</span>
+</div>
+<div class="receipts-grid"><div class="case-studies-grid"><div class="portfolio-card">
+<div class="portfolio-loc">Lagos, Nigeria · Apparel &amp; Retail</div>
+<h3>FIT-GEAR Brand</h3>
+<div class="portfolio-row"><span class="tag">The Problem</span><p>Strong sales, but zero written contract structure between retail and manufacturing. Money was invisibly leaking.</p></div>
+<div class="portfolio-row"><span class="tag">The Fix</span><p>Drafted clean intra-entity agreements and aligned their commercial setup with institutional grant standards.</p></div>
+<div class="portfolio-row"><span class="tag">The Result</span><p>₦4,000,000 grant approved via the Seed Gems Foundation and cash flow leaks controlled.</p></div>
+</div><div class="portfolio-card">
+<div class="portfolio-loc">Nairobi, Kenya · Supply Chain &amp; Operations</div>
+<h3>AgriKip Solutions</h3>
+<div class="portfolio-row"><span class="tag">The Problem</span><p>Profitable $22,000 ARR operation, but their capital strategy relied on heavy debt terms that choked cash flow and scared growth partners away.</p></div>
+<div class="portfolio-row"><span class="tag">The Fix</span><p>Rebuilt their commercial setup and split logistics assets from processing operations.</p></div>
+<div class="portfolio-row"><span class="tag">The Result</span><p>Secured KSh 3,420,000 in grant funding and closed a $2k seed round without giving up founder control.</p></div>
+</div><div class="portfolio-card">
+<div class="portfolio-loc">Kigali, Rwanda · Tech-Enabled Commerce</div>
+<h3>Zura Commerce</h3>
+<div class="portfolio-row"><span class="tag">The Problem</span><p>Spent pitches explaining code instead of showing how the business actually makes money.</p></div>
+<div class="portfolio-row"><span class="tag">The Fix</span><p>Stripped the fluff. Rebuilt the deck around market positioning, clear cash flow, and risk control.</p></div>
+<div class="portfolio-row"><span class="tag">The Result</span><p>Closed core regional bank partnership and opened an investment pipeline with FRw 11,600,000 committed.</p></div>
+</div><div class="portfolio-card">
+<div class="portfolio-loc">Nairobi, Kenya · Consumer Goods</div>
+<h3>Kiota Organics</h3>
+<div class="portfolio-row"><span class="tag">The Problem</span><p>Stuck selling in local markets with no leverage to negotiate larger retail distribution deals.</p></div>
+<div class="portfolio-row"><span class="tag">The Fix</span><p>Set up commercial distribution agreements and structured supplier contracts.</p></div>
+<div class="portfolio-row"><span class="tag">The Result</span><p>Locked in retail distribution across Kenya and Uganda while keeping 100% equity.</p></div>
+</div></div><div class="review-columns"><div class="review-stack"><div class="review-card">
+<p class="review-quote">"Most people tell you what you want to hear. Mandy tells you where your business is losing money. When our TEF grant approval came through, the first person my co-founder and I messaged was Mandy. Africa has a lot of people talking, but very few who actually know how to build real commercial structures so institutions take you seriously. BWAFA restructured our model in weeks. We didn't just secure the capital. We kept full control of our company.”</p>
+<div class="review-shot"><img alt="WhatsApp message from Dunsin O. confirming a $5,000 Tony Elumelu Foundation grant approval in Lagos, Nigeria." src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/file_0000000034d4824392b40ce51a580015.jpg"/></div>
+<div class="review-attrib">Dunsin O., CEO — Lagos, Nigeria</div>
+<div class="review-outcome">Approved $5,000 from Tony Elumelu Foundation</div>
+</div><div class="review-card">
+<p class="review-quote">"I thought BWAFA was just another online group. Then I got real direction. I joined during Shop African Week just looking to learn. I ended up winning the cash prize, and out of curiosity, booked an advisory session. That was when I realized I was severely undercharging. Two weeks after fixing my pricing model, I closed my biggest client yet."</p>
+<div class="review-attrib">Amina M., Creative Director — Kano, Nigeria</div>
+<div class="review-outcome">Tribe Member &amp; Pricing Restructure</div>
+</div></div><div class="review-stack"><div class="review-card">
+<p class="review-quote">"They don't just review contracts; they stop you from signing away your life. Before BWAFA, our contracts were just templates from Google. During our audit, Mandy spotted a clause in an early deal that would have stripped us of our IP rights the second we scaled past $10,000. That single catch saved my company. Straight to the point, zero confusion."</p>
+<div class="review-shot"><img alt="Commercial agreement on an iPad with BWAFA audit note: Clause 4.2 flagged, IP rights shielded prior to scaling past $10,000." src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-08-3e8f7db5a5fd9b9e.webp"/></div>
+<div class="review-attrib">Wanjiku K., Founder — Nairobi, Kenya</div>
+<div class="review-outcome">Contract Architecture &amp; IP Protection Secured.</div>
+</div><div class="review-card">
+<p class="review-quote">"As a startup company, we have always known winning investors hearts can be quite tricky because they can be nodding at you &amp; still turn you down, then you feel disappointed. But without giving out much, I’ll say that BWAFA does a lot for Africans who want to build real, lasting companies. Tested, approved, trusted."</p>
+<div class="review-attrib">Ibunimi T., Tech Designer — Port Harcourt, Nigeria</div>
+<div class="review-outcome">Venture Building &amp; Product Advisory</div>
+</div></div><div class="review-stack"><div class="review-card">
+<p class="review-quote">"BWAFA does not just prepare you for investors; they fix how your business actually makes money day-to-day. I got real direction. We were moving quite well but supplier costs were eating every Naira of profit before it even hit our account. The BWAFA team came in, renegotiated our supplier contracts, and improved how we price and package our inventory. Within three months, our profit margins jumped, we opened two new distribution hubs in Nigeria, and we stopped running a high-revenue business that was secretly broke."</p>
+<div class="review-attrib">Tobi A., Managing Director — Lagos, Nigeria</div>
+<div class="review-outcome">Supply Chain &amp; Margin Restructure</div>
+</div><div class="review-card">
+<p class="review-quote">"Building in Kigali, it's easy to feel like you have to copy Western patterns. Working with BWAFA was different. Since then we’ve closed on our biggest client yet and focused on what actually makes us unpredictable to competitors. Our sessions are fabulous, very humbling as I take away much, even with my level of expertise."</p>
+<div class="review-attrib">Jean-Luc N. — Kigali, Rwanda</div>
+<div class="review-outcome">Strategic Advisory &amp; Market Positioning</div>
+</div><div class="review-card">
+<p class="review-quote">"The first time I came across BWAFA here on instagram. I was curious but I’m a builder who moved from America to Nigeria, so willing to connect &amp; build with fellow likeminded Founders. I assumed it was a networking community, but working with the BWAFA team truly changed how we run our operations locally. They helped us navigate the regulatory terrain, fix our local supplier contracts &amp; restructure our pricing so we weren't burning cash trying to adapt to the market. Moving back to build on the continent is tough, but BWAFA (both as a movement &amp; firm) has become a big part of us. No more losing our minds."</p>
+<div class="review-attrib">Ekenenna A., Co-Founder — Abuja, Nigeria</div>
+<div class="review-outcome">Diaspora Builder &amp; Operational Restructure</div>
+</div></div></div></div>
+</div>
+</section>
+<!-- WORK WITH US -->
+<section class="work" id="work">
+<div class="wrap">
+<div class="work-grid">
+<div>
+<h2><span>Ready to work</span> <span>with us</span></h2>
+<p class="work-hook">You bring the venture. We bring the structure. No performance necessary.</p>
+<div class="steps">
+<div class="step">
+<span class="n">1</span>
+<p>Tell us where the weak point is, pitch, revenue, contracts, or grant strategy.</p>
+</div>
+<div class="step">
+<span class="n">2</span>
+<p>Send over what you've got, deck, model, or agreement. No need to make it pretty first, that’s our job.</p>
+</div>
+<div class="step">
+<span class="n">3</span>
+<p>We fix the structural problem together, not just the line that's embarrassing you in the room.</p>
+</div>
+</div>
+<a class="btn-primary" href="mailto:contact@bwafa.com">Protect Your Equity</a>
+</div>
+<div class="work-envelope">
+<img alt="BWAFA card" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-09-2192e91161f8e5a8.webp"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<div class="flogo">
+<img alt="BWAFA logo" src="https://raw.githubusercontent.com/BWAFA-Global/BWAFA.com/main/image-01-1bfacd54218ec7df.webp"/>
+<span>BWAFA</span>
+</div>
+<div class="tagline">The Movement creates the authority. The Firm converts it.</div>
+<div class="fcontact-grid">
+<div class="fcontact-block">
+<div class="fcontact-label">The Lead Architect</div>
+<a href="mailto:hello@mandymorah.com">hello@mandymorah.com</a>
+<a href="https://www.mandymorah.com" rel="noopener" target="_blank">mandymorah.com</a>
+<a aria-label="Mandyoluogy on Instagram" href="https://www.instagram.com/Mandyoluogy" rel="noopener noreferrer" target="_blank">@Mandyoluogy</a>
+</div>
+<div class="fcontact-block">
+<div class="fcontact-label">BWAFA</div>
+<a href="mailto:contact@bwafa.com">contact@bwafa.com</a>
+<div aria-label="BWAFA social platforms" class="socials">
+<a aria-label="BWAFA on Instagram" class="social-link" href="https://www.instagram.com/bwafaglobal" rel="noopener noreferrer" target="_blank">
+<span class="social-label">Instagram</span>
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M7.3 2h9.4A5.3 5.3 0 0 1 22 7.3v9.4a5.3 5.3 0 0 1-5.3 5.3H7.3A5.3 5.3 0 0 1 2 16.7V7.3A5.3 5.3 0 0 1 7.3 2Zm0 2A3.3 3.3 0 0 0 4 7.3v9.4A3.3 3.3 0 0 0 7.3 20h9.4a3.3 3.3 0 0 0 3.3-3.3V7.3A3.3 3.3 0 0 0 16.7 4H7.3Zm9.95 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"></path></svg>
+</a>
+<a aria-label="BWAFA on Facebook" class="social-link" href="https://www.facebook.com/bwafaglobal" rel="noopener noreferrer" target="_blank">
+<span class="social-label">Facebook</span>
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.7V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3h2.8v8h3.4Z"></path></svg>
+</a>
+<a aria-label="BWAFA on TikTok" class="social-link" href="https://www.tiktok.com/@bwafaglobal" rel="noopener noreferrer" target="_blank">
+<span class="social-label">TikTok</span>
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M15.7 4c.4 1.9 1.5 3.1 3.3 3.2v3.1c-1.3 0-2.5-.4-3.5-1.1v5.9c0 3.4-2.4 5.6-5.7 5.6-3.1 0-5.3-2-5.3-4.9 0-3.2 2.7-5.1 5.9-4.8v3.2c-1.5-.2-2.6.4-2.6 1.6 0 1 .8 1.7 2 1.7 1.4 0 2.4-.9 2.4-2.7V4h3.5Z"></path></svg>
+</a>
+<a aria-label="BWAFA on Threads" class="social-link" href="https://www.threads.net/@bwafaglobal" rel="noopener noreferrer" target="_blank">
+<span class="social-label">Threads</span>
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M12.1 2C6.2 2 3 5.5 3 11.8 3 18.2 6.3 22 12 22c5.2 0 8.6-2.7 8.6-7 0-3.5-2.2-5.7-5.7-6.1-.7-2.2-2.2-3.2-4.5-3.2-1.8 0-3.2.7-4.1 2.1l1.9 1.2c.5-.8 1.2-1.2 2.2-1.2 1.2 0 2 .5 2.4 1.5-1-.1-2-.1-2.9.1-2.4.4-3.8 1.8-3.8 3.7 0 2.2 1.8 3.6 4.2 3.6 2.6 0 4.3-1.5 4.5-4.2 2 .3 2.9 1.5 2.9 3.5 0 2.9-2.4 4.8-6 4.8-4.4 0-6.8-2.9-6.8-8.2 0-5 2.3-7.5 6.9-7.5 3.8 0 6.2 1.7 7.2 5.1l2.1-.6C18.3 4 15.7 2 12.1 2Zm-.2 11.9c-1.2 0-2-.6-2-1.5 0-.7.6-1.3 1.9-1.5.8-.1 1.6-.1 2.4 0 0 1.9-.8 3-2.3 3Z"></path></svg>
+</a>
+<a aria-label="BWAFA on X" class="social-link" href="https://x.com/bwafaglobal" rel="noopener noreferrer" target="_blank">
+<span class="social-label">X</span>
+<svg aria-hidden="true" viewbox="0 0 24 24"><path d="M4 3h4.1l4.1 5.6L16.8 3H20l-6.2 7.2L21 21h-4.1l-4.8-6.5L6.9 21H3.7l6.5-7.6L4 3Zm4.7 2.1H7.1l9.2 13.8h1.6L8.7 5.1Z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="fmeta">© 2026 BWAFA. Building With Africans, For Africa.</div>
+</div>
+</footer>
+</body>
+</html>
